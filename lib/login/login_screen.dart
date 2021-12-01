@@ -1,6 +1,7 @@
 import 'package:cokefactory/bloc/login_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:cokefactory/main.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({Key? key}) : super(key: key);
@@ -10,17 +11,36 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
-  final formKey = GlobalKey();
+  // final formKey = GlobalKey();
+
+  final formKey = GlobalKey<FormState>();
 
   Widget _usernameField() {
     return TextFormField(
       decoration: InputDecoration(hintText: "Username"),
+      validator: (value){
+        if(value == "Admin" || value == "Viewer"){
+          userType = value!;
+
+        }else{
+          return "Wrong Username";
+        }
+        return null;
+      }
     );
   }
 
   Widget _passwordField() {
     return TextFormField(
       decoration: InputDecoration(hintText: "Password"),
+        validator: (value){
+          if(value == "Admin1" || value == "Viewer1"){
+
+          }else{
+            return "Wrong Password";
+          }
+          return null;
+        }
     );
   }
 
@@ -40,7 +60,8 @@ class _LoginFormState extends State<LoginForm> {
           ),
           ElevatedButton(
               onPressed: () {
-                BlocProvider.of<UserLoginCubit>(context).loginUser();
+                if(formKey.currentState!.validate()){
+                BlocProvider.of<UserLoginCubit>(context).loginUser(userType);}
               },
               child: Text("Login")),
         ],
