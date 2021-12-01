@@ -38,9 +38,13 @@ class _MyHomePageState extends State<MyHomePage> {
     return BlocBuilder<UserLoginCubit, UserLoginState >(
       builder: (context, state) {
         Widget screen;
-        if(state is UserLoginInitialState)  screen = LoginForm();
-        else if (state is UserLoginLoadingState) screen = CircularProgressIndicator();
-        else screen = Dashboard();
+        if(state is UserLoginInitialState) {
+          screen = const LoginForm();
+        } else if (state is UserLoginLoadingState) {
+          screen = const CircularProgressIndicator();
+        } else {
+          screen = const Dashboard();
+        }
         return Scaffold(
           body: Center(child: screen),
         );
