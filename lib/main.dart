@@ -42,10 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
         else if (state is UserLoginLoadingState) screen = CircularProgressIndicator();
         else screen = Dashboard();
         return Scaffold(
-          appBar: AppBar(),
-          body: Center(
-            child: screen,
-          ),
+          body: Center(child: screen),
         );
       },
     );

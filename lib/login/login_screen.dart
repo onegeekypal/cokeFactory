@@ -26,24 +26,24 @@ class _LoginFormState extends State<LoginForm> {
 
   Widget _buttonRow(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        TextButton(
-          onPressed: () {},
-          child: Text(
-            "Clear",
-            style: TextStyle(color: Colors.red),
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          TextButton(
+            onPressed: () {},
+            child: Text(
+              "Clear",
+              style: TextStyle(color: Colors.red),
+            ),
           ),
-        ),
-        SizedBox(
-          width: 10,
-        ),
-        ElevatedButton(
-            onPressed: () {
-              BlocProvider.of<UserLoginCubit>(context).loginUser();
-            },
-            child: Text("Login")),
-      ],
+          SizedBox(
+            width: 10,
+          ),
+          ElevatedButton(
+              onPressed: () {
+                BlocProvider.of<UserLoginCubit>(context).loginUser();
+              },
+              child: Text("Login")),
+        ],
     );
   }
 
