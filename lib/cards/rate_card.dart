@@ -38,9 +38,9 @@ class _RateCardState extends State<RateCard> with TickerProviderStateMixin {
           rate = state.data.rate;
           status = state.data.rateStatus;
           if (status) {
-            _controller.repeat(period: Duration(hours: 5));
+
           } else {
-            _controller.stop(canceled: false);
+
           }
         }
         bool isAdmin = userType == "Admin";
@@ -84,6 +84,7 @@ class _RateCardState extends State<RateCard> with TickerProviderStateMixin {
                     ElevatedButton(
                       onPressed: () {
                         if (isAdmin) {
+                          _controller.repeat();
                           BlocProvider.of<RestApiCubit>(context).startMainStatus();
                         }
                       },
@@ -93,6 +94,7 @@ class _RateCardState extends State<RateCard> with TickerProviderStateMixin {
                     ElevatedButton(
                         onPressed: () {
                           if (isAdmin) {
+                            _controller.stop(canceled: false);
                             BlocProvider.of<RestApiCubit>(context).stopMainStatus();
                           }
                         },

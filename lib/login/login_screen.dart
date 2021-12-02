@@ -32,6 +32,7 @@ class _LoginFormState extends State<LoginForm> {
 
   Widget _passwordField() {
     return TextFormField(
+      obscureText: true,
       decoration: InputDecoration(hintText: "Password"),
         validator: (value){
           if(value == "Admin1" || value == "Viewer1"){
